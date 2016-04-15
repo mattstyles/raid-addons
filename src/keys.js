@@ -23,7 +23,8 @@ export default function KeySignal( opts ) {
   const signal = new Signal( opts )
 
   quay.on( '*', event => signal.dispatch({
-    keys: quay.pressed
+    keys: quay.pressed,
+    duration: event.delta
   }))
 
   return signal
