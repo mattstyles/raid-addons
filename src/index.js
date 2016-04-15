@@ -7,4 +7,5 @@ var addons = {
   compose
 }
 
+export default addons
 module.exports = addons
