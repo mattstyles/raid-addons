@@ -1,7 +1,10 @@
 
+import curry from './curry'
+import compose from './compose'
+
 var addons = {
-  curry: require( 'curry' ),
-  compose: require( 'compose' )
+  curry,
+  compose
 }
 
 module.exports = addons
