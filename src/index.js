@@ -4,13 +4,15 @@ import compose from './compose'
 import TickSignal from './tick'
 import KeySignal from './keys'
 import ClickSignal from './click'
+import WindowSignal from './window'
 
 var addons = {
   curry,
   compose,
   TickSignal,
   KeySignal,
-  ClickSignal
+  ClickSignal,
+  WindowSignal
 }
 
 export default addons
