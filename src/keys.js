@@ -8,7 +8,7 @@ import { Signal } from 'raid'
  * of the currently pressed keys.
  *
  * @example
- * const keys = TickSignal({
+ * const keys = KeySignal({
  *   model: app
  * })
  * keys.register( src => {
