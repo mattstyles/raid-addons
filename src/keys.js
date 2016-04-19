@@ -18,8 +18,11 @@ import { Signal } from 'raid'
  * })
  *
  */
+
+// Single quay instance to pull from
+const quay = new Quay()
+
 export default function KeySignal( opts ) {
-  const quay = new Quay()
   const signal = new Signal( opts )
 
   quay.on( '*', event => signal.dispatch({

@@ -1,5 +1,5 @@
 
-import raf from 'raf-stream'
+import stream from 'raf-stream'
 import { Signal } from 'raid'
 
 /**
@@ -16,10 +16,14 @@ import { Signal } from 'raid'
  * })
  *
  */
+
+// Just create the one instance of raf
+let raf = stream()
+
 export default function TickSignal( opts ) {
   const tick = new Signal( opts )
 
-  raf().on( 'data', dt => tick.dispatch({
+  raf.on( 'data', dt => tick.dispatch({
     delta: dt
   }))
 

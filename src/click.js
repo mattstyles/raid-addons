@@ -17,19 +17,22 @@ import { Signal } from 'raid'
  * })
  *
  */
+
+// Solo instance of raf for clicks
+const raf = stream()
+
 export default function ClickSignal( opts={} ) {
   const click = new Signal( opts )
 
   let duration = 0
-  const raf = stream()
-    .on( 'data', dt => {
-      duration += duration === 0
-        ? 1
-        : dt
-      return click.dispatch({
-        duration: duration
-      })
+  raf.on( 'data', dt => {
+    duration += duration === 0
+      ? 1
+      : dt
+    return click.dispatch({
+      duration: duration
     })
+  })
 
   raf.pause()
 
