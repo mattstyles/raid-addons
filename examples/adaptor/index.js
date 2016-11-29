@@ -1,22 +1,32 @@
 
 import {render} from 'inferno-dom'
 import {Signal} from 'raid'
+import {createSelector} from 'reselect'
 
 import adaptor from '../../src/adaptor'
 
 import element from '../_common/element'
 
 let signal = new Signal({
-  foo: 'bar'
+  name: 'Raid'
 })
 
 let store = adaptor(signal)
 
-const Comp = ({foo}) => {
-  return <h1>{foo}</h1>
+const Message = ({msg, id}) => {
+  return (
+    <div>
+      <h1>{msg + ' ' + id}</h1>
+    </div>
+  )
 }
-const App = store.connect('foo', Comp)
+
+const selector = createSelector(
+  state => state.name,
+  name => ({id: name})
+)
+const App = store.connect(selector, Message)
 
 store.observe(state => {
-  render(<App />, element)
+  render(<App msg='Hello' />, element)
 })

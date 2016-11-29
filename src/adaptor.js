@@ -7,8 +7,8 @@ const adaptor = signal => {
   return {
     connect (selector, Component) {
       return props => {
-        let state = internalState[selector]
-        return <Component foo={state} />
+        let state = selector(internalState)
+        return <Component {...state} {...props} />
       }
     },
     observe (onAction, onError, onComplete) {
