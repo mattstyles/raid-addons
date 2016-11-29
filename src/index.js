@@ -1,18 +1,8 @@
 
-import curry from './curry'
-import compose from './compose'
-import TickSignal from './tick'
-import KeySignal from './keys'
-import ClickSignal from './click'
-import WindowSignal from './window'
+import adaptor from './adaptor'
 
 var addons = {
-  curry,
-  compose,
-  TickSignal,
-  KeySignal,
-  ClickSignal,
-  WindowSignal
+  adaptor
 }
 
 export default addons
