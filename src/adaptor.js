@@ -4,15 +4,10 @@ const adaptor = signal => {
   signal.observe(state => {
     internalState = state
   })
-  return {
-    connect (selector, Component) {
-      return props => {
-        let state = selector(internalState)
-        return <Component {...state} {...props} />
-      }
-    },
-    observe (onAction, onError, onComplete) {
-      return signal.observe(onAction, onError, onComplete)
+  return function connect (selector, Component) {
+    return props => {
+      let state = selector(internalState)
+      return <Component {...state} {...props} />
     }
   }
 }
