@@ -1,8 +1,10 @@
 
 import adaptor from './adaptor'
+import compress from './compress'
 
 var addons = {
-  adaptor
+  adaptor,
+  compress
 }
 
 export default addons
