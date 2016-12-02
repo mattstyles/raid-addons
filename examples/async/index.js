@@ -11,7 +11,7 @@ import Button from '../_common/actionButton'
 const signal = new Signal({
   name: 'Joe',
   age: 20,
-  requesting: false
+  isRequesting: false
 })
 
 const dispatch = type => {
@@ -20,7 +20,7 @@ const dispatch = type => {
   }
 }
 
-const Person = ({name, age, requesting}) => {
+const Person = ({name, age, isRequesting}) => {
   return (
     <div style={{margin: 30, background: 'white', borderRadius: 3, padding: 12, display: 'table'}}>
       <h2 style={{margin: 6}}>{name}</h2>
@@ -28,12 +28,12 @@ const Person = ({name, age, requesting}) => {
         styles={{
           marginRight: 0,
           marginTop: 8,
-          background: requesting ? 'rgb(144, 194, 144)' : 'rgb(104, 139, 88)',
+          background: 'rgb(125,91,166)',
           width: 180
         }}
         onClick={dispatch('CHANGE')}
       >
-        {requesting ? 'Updating...' : 'Trigger Update'}
+        {isRequesting ? 'Updating...' : 'Trigger Update'}
       </Button>
     </div>
   )
@@ -47,11 +47,14 @@ const delay = ms => {
 
 const update = async (state, event) => {
   if (event.type === 'CHANGE') {
+    if (state.requesting === true) {
+      return state
+    }
     await delay(1000)
     state.name = state.name === 'Joe'
       ? 'Josie'
       : 'Joe'
-    signal.emit({type: 'COMPLETE'})
+    state.requesting = false
     return state
   }
   return state
@@ -63,11 +66,6 @@ const request = (state, event) => {
     return state
   }
 
-  if (event.type === 'COMPLETE') {
-    state.requesting = false
-    return state
-  }
-
   return state
 }
 
@@ -76,7 +74,7 @@ signal.register(request)
 
 signal.observe(state => {
   render(
-    <Person name={state.name} age={state.age} requesting={state.requesting} />,
+    <Person name={state.name} age={state.age} isRequesting={state.isRequesting} />,
     element
   )
 }, e => console.error(e))
