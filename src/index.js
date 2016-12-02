@@ -1,10 +1,14 @@
 
 import adaptor from './adaptor'
 import compress from './compress'
+import flow from './flow'
+import async from './async'
 
 var addons = {
   adaptor,
-  compress
+  compress,
+  flow,
+  async
 }
 
 export default addons
