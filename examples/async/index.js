@@ -54,7 +54,7 @@ const update = async (state, event) => {
     state.name = state.name === 'Joe'
       ? 'Josie'
       : 'Joe'
-    state.requesting = false
+    state.isRequesting = false
     return state
   }
   return state
@@ -62,7 +62,7 @@ const update = async (state, event) => {
 
 const request = (state, event) => {
   if (event.type === 'CHANGE') {
-    state.requesting = true
+    state.isRequesting = true
     return state
   }
 
