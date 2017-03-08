@@ -4,7 +4,7 @@ function fold (updates, state, event) {
     .all(updates.map(update => update(state, event)))
 }
 
-function async () {
+function arc () {
   let key = Math.random().toString(16).slice(4)
   let updates = Array.from(arguments).slice(1, arguments.length)
   let emit = arguments[0]
@@ -32,4 +32,4 @@ function async () {
   }
 }
 
-export default async
+export default arc

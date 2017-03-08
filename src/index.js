@@ -1,15 +1,16 @@
 
-import adaptor from './adaptor'
-import compress from './compress'
-import flow from './flow'
-import async from './async'
+export adaptor from './adaptor'
+export compress from './compress'
+export flow from './flow'
+export arc from './arc'
+export hook from './hook'
 
-var addons = {
-  adaptor,
-  compress,
-  flow,
-  async
-}
-
-export default addons
-module.exports = addons
+// var addons = {
+//   adaptor,
+//   compress,
+//   flow,
+//   async
+// }
+//
+// export default addons
+// module.exports = addons
