@@ -1,9 +1,11 @@
 
-export adaptor from './adaptor'
-export compress from './compress'
-export flow from './flow'
-export arc from './arc'
-export hook from './hook'
+export {default as adaptor} from './adaptor'
+export {default as compress} from './compress'
+export {default as flow} from './flow'
+export {default as arc} from './arc'
+export {default as hook} from './hook'
+export {default as safe} from './safe'
+export {default as squash} from './squash'
 
 // var addons = {
 //   adaptor,
