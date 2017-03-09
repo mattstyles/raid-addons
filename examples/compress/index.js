@@ -3,8 +3,10 @@ import {render} from 'inferno-dom'
 
 import {Signal} from 'raid'
 import compress from '../../src/compress'
+import flow from '../../src/flow'
 
 import element from '../_common/element'
+import Button from '../_common/actionButton'
 
 const signal = new Signal({
   name: 'Joe',
@@ -22,6 +24,9 @@ const Person = ({name, age}) => {
     <div style={{padding: 30}}>
       <h2 onClick={dispatch('CHANGE_NAME')}>{name}</h2>
       <p onClick={dispatch('CHANGE_AGE')}>{`Age: ${age}`}</p>
+      <Button
+        onClick={dispatch('CHANGE')}
+      >Update</Button>
     </div>
   )
 }
@@ -38,10 +43,17 @@ const updateName = state => {
   return state
 }
 
+const update = flow(
+  updateName,
+  updateAge
+)
+
 signal.register(compress({
   'CHANGE_NAME': updateName,
   'CHANGE_AGE': updateAge
 }))
+
+signal.register(compress('CHANGE')(update))
 
 signal.observe(state => {
   render(
