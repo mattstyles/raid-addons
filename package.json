@@ -50,7 +50,7 @@
   "bugs": "https://github.com/mattstyles/raid-addons/issues",
   "license": "MIT",
   "devDependencies": {
-    "axios": "^0.15.3",
+    "axios": "^0.19.0",
     "babel-cli": "^6.16.0",
     "babel-eslint": "^7.0.0",
     "babel-plugin-inferno": "^0.7.7",
